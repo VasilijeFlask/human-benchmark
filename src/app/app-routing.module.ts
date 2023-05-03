@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { ReactionTimeComponent } from './tests/reaction-time/reaction-time.component';
+import { ReactionComponent } from './reaction/reaction.component';
+import { SequenceComponent } from './sequence/sequence.component';
+
 
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent},
-  { path: '/tests/reactiontime', component: ReactionTimeComponent}
- 
+  { path: 'reaction', component: ReactionComponent},
+  { path: 'sequence', component: SequenceComponent}
+
 ];
 
 @NgModule({

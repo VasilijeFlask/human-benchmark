@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
-import { ReactionTimeComponent } from './tests/reaction-time/reaction-time.component';
-import { SequenceMemoryComponent } from './tests/sequence-memory/sequence-memory.component';
-import { AimTrainerComponent } from './tests/aim-trainer/aim-trainer.component';
-import { NumberMemoryComponent } from './tests/number-memory/number-memory.component';
-import { VerbalMemoryComponent } from './tests/verbal-memory/verbal-memory.component';
-import { ChimpTestComponent } from './tests/chimp-test/chimp-test.component';
+import { ReactionComponent } from './reaction/reaction.component';
+import { StatsComponent } from './stats/stats.component';
+import { AboutComponent } from './about/about.component';
+import { SequenceComponent } from './sequence/sequence.component';
+
+
 
 @NgModule({
   declarations: [
@@ -19,16 +20,15 @@ import { ChimpTestComponent } from './tests/chimp-test/chimp-test.component';
     HeaderComponent,
     HomeComponent,
     FooterComponent,
-    ReactionTimeComponent,
-    SequenceMemoryComponent,
-    AimTrainerComponent,
-    NumberMemoryComponent,
-    VerbalMemoryComponent,
-    ChimpTestComponent
+    ReactionComponent,
+    StatsComponent,
+    AboutComponent,
+    SequenceComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

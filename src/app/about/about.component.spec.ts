@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VerbalMemoryComponent } from './verbal-memory.component';
+import { AboutComponent } from './about.component';
 
-describe('VerbalMemoryComponent', () => {
-  let component: VerbalMemoryComponent;
-  let fixture: ComponentFixture<VerbalMemoryComponent>;
+describe('AboutComponent', () => {
+  let component: AboutComponent;
+  let fixture: ComponentFixture<AboutComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VerbalMemoryComponent ]
+      declarations: [ AboutComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(VerbalMemoryComponent);
+    fixture = TestBed.createComponent(AboutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

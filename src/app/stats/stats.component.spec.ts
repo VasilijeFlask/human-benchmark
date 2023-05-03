@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NumberMemoryComponent } from './number-memory.component';
+import { StatsComponent } from './stats.component';
 
-describe('NumberMemoryComponent', () => {
-  let component: NumberMemoryComponent;
-  let fixture: ComponentFixture<NumberMemoryComponent>;
+describe('StatsComponent', () => {
+  let component: StatsComponent;
+  let fixture: ComponentFixture<StatsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NumberMemoryComponent ]
+      declarations: [ StatsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(NumberMemoryComponent);
+    fixture = TestBed.createComponent(StatsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChimpTestComponent } from './chimp-test.component';
+import { SequenceComponent } from './sequence.component';
 
-describe('ChimpTestComponent', () => {
-  let component: ChimpTestComponent;
-  let fixture: ComponentFixture<ChimpTestComponent>;
+describe('SequenceComponent', () => {
+  let component: SequenceComponent;
+  let fixture: ComponentFixture<SequenceComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChimpTestComponent ]
+      declarations: [ SequenceComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ChimpTestComponent);
+    fixture = TestBed.createComponent(SequenceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
