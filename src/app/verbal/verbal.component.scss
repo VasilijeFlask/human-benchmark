@@ -24,6 +24,9 @@
             border: 0px;
             cursor: pointer;
         }
+        & h2 {
+            padding-top: 10px;
+        }
     }
     & .stats_about {
         display: flex;
