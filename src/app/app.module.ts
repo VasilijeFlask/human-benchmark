@@ -18,6 +18,7 @@ import { ChimpComponent } from './chimp/chimp.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { StartButtonComponent } from './start-button/start-button.component';
 
 
 
@@ -38,6 +39,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     SignupComponent,
     LoginComponent,
     DashboardComponent,
+    StartButtonComponent,
   ],
   imports: [
     BrowserModule,

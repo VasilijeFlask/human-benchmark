@@ -3,7 +3,7 @@
         <span class="fa fa-bolt fa-7x" aria-hidden="true"></span>
         <h1>Reaction Time Test</h1>
         <h2>When the red box turns green, click as quickly as you can.</h2>
-        <h2>Click anywhere to start.</h2>
+        <app-start-button></app-start-button>
     </div>
     <div class="stats_about">
         <div class="stats">
@@ -12,7 +12,7 @@
         </div>
         <div class="about">
             <h2>About the test</h2>
-           <app-about></app-about>
+           <app-about [about]="getDescription()"></app-about>
         </div>
     </div>
 </div>

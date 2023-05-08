@@ -1,0 +1,75 @@
+.holder {
+    background-color: rgb(230,232,244);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 115px;
+    & .form {
+        width: 55%;
+        background-color: white;
+        margin-top: 50px;
+        padding: 30px 300px 100px 300px;
+        border-radius: 3px;
+        display: flex;
+        flex-direction: column;
+        & .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0px;
+            cursor: default;
+            & .h1 {
+                & h1 {
+                    font-weight: 100;
+                    font-size: 60px;
+                }
+            }
+        }
+        & .login {
+            padding-top: 10px;
+            font-size: 20px;
+            & span {
+                padding: 5px;
+            }
+            & a {
+                padding: 5px;
+                text-decoration: none;
+                color: rgb(77,155,240);
+            }
+            & a:hover {
+                background-color: rgb(235,235,235);
+                border-radius: 2px;
+            }
+        }
+    }
+    & .submission {
+        display: flex;
+        flex-direction: column;
+        & .input {
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 10px;
+            font-size: 20px;
+            & input {
+                width: 100%;
+                padding: 8px;
+                font-size: 20px;
+                border: 1px solid rgb(200,200,200);
+                border-radius: 3px;
+            }
+            & input:focus {
+                border: 2px solid rgb(77,155,240);
+            }
+        }
+        & button {
+            padding: 15px 0px;
+            font-size: 22px;
+            background-color: rgb(77,155,240);
+            color: white;
+            border: 1px solid rgb(200,200,200);
+            border-radius: 3px;
+            margin-top: 10px;
+        }
+
+    }
+}

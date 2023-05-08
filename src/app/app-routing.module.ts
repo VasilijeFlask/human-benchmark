@@ -7,6 +7,9 @@ import { AimComponent } from './aim/aim.component';
 import { NumberComponent } from './number/number.component';
 import { VerbalComponent } from './verbal/verbal.component';
 import { ChimpComponent } from './chimp/chimp.component';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
@@ -22,6 +25,11 @@ const routes: Routes = [
   { path: 'number', component: NumberComponent},
   { path: 'verbal', component: VerbalComponent},
   { path: 'chimp', component: ChimpComponent},
+  { path: 'signup', component: SignupComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'dashboard', component: DashboardComponent},
+
+
 
 
 
