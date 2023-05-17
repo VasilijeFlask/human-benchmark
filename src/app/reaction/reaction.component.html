@@ -1,18 +1,27 @@
 <div class="holder">
     <div class="game">
-        <span class="fa fa-bolt fa-7x" aria-hidden="true"></span>
-        <h1>Reaction Time Test</h1>
-        <h2>When the red box turns green, click as quickly as you can.</h2>
-        <app-start-button></app-start-button>
+        <div class="box" 
+             [ngClass]="{'green': isGreen, 'red': !isGreen}" 
+             (click)="handleClick()" 
+             [hidden]="!showBox">
+        </div>
+        <span class="fa fa-bolt fa-7x fade-in" aria-hidden="true"></span>
+        <h1 class="fade-in">Reaction Time Test</h1>
+        <h2 class="fade-in">When the red box turns green, click as quickly as you can.</h2>
+        <app-start-button class="fade-in" (click)="startGame()" [hidden]="showBox"></app-start-button>
     </div>
     <div class="stats_about">
         <div class="stats">
             <h2>Statistics</h2>
-            <app-stats></app-stats>
+            <app-stats [labels]="pageLabels"
+                       [data]="pageData"></app-stats>
         </div>
         <div class="about">
             <h2>About the test</h2>
-           <app-about [about]="getDescription()"></app-about>
+           <app-about [first]="first"
+                      [second]="second"
+                      [third]="third"
+                      [fourth]="fourth" ></app-about>
         </div>
     </div>
 </div>

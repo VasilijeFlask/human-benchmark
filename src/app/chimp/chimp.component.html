@@ -1,19 +1,22 @@
 <div class="holder">
     <div class="game">
-        <span class="fa fa-th fa-8x" aria-hidden="true"></span>
-        <h1>Are you smarter than a chimpanzee?</h1>
-        <h2>Click the squares in order according to their numbers.</h2>
-        <h2>It will get progressively harder.</h2>
-        <app-start-button></app-start-button>
+        <span class="fa fa-th fa-8x fade-in" aria-hidden="true"></span>
+        <h1 class="fade-in">Are you smarter than a chimpanzee?</h1>
+        <h2 class="fade-in">Click the squares in order according to their numbers.</h2>
+        <h2 class="fade-in">It will get progressively harder.</h2>
+        <app-start-button class="fade-in"></app-start-button>
     </div>
     <div class="stats_about">
         <div class="stats">
             <h2>Statistics</h2>
-            <app-stats></app-stats>
+            <app-stats [data]="pageData"
+                       [labels]="pageLabels"></app-stats>
         </div>
         <div class="about">
             <h2>About the test</h2>
-           <app-about></app-about>
+           <app-about [first]="first"
+                      [second]="second"
+                      [third]="third"></app-about>
         </div>
     </div>
 </div>

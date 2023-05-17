@@ -69,6 +69,10 @@
             border: 1px solid rgb(200,200,200);
             border-radius: 3px;
             margin-top: 10px;
+            cursor: pointer;
+        }
+        & button:hover {
+            background-color: rgb(43,135,209);
         }
 
     }

@@ -1,20 +1,58 @@
 .holder {
     display: flex;
     flex-direction: column;
-    & .game {
+    .game {
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: rgb(43,135,209);
+        background-color: rgb(43, 135, 209);
         color: white;
         padding: 90px 0px;
         cursor: default;
+      
         & h1 {
-            font-size: 70px;
-            padding-top: 20px;
-            padding-bottom: 10px;
+          font-size: 70px;
+          padding-top: 20px;
+          padding-bottom: 10px;
         }
-    }
+      
+        & h2 {
+          font-size: 32px;
+          padding-bottom: 15px;
+        }
+      
+        & .fade-in {
+          opacity: 0;
+          animation: fade-in 0.5s ease-out forwards;
+        }
+      
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      
+        & .box {
+          width: 200px;
+          height: 200px;
+          margin-top: 50px;
+          border-radius: 10px;
+      
+          &.red {
+            background-color: red;
+          }
+      
+          &.green {
+            background-color: green;
+          }
+        }
+      }
+      
     & .stats_about {
         display: flex;
         justify-content: center;
@@ -23,7 +61,7 @@
         & .stats {
             background-color: white;
             margin-right: 20px;
-            width: 25%;
+            width: 45%;
             padding: 20px;
             border-radius: 5px;
             & h2 {
@@ -41,7 +79,7 @@
 
             & h2 {
                 font-weight: 500;
-                font-size: 28px;
+                font-size: 32px;
                 padding-bottom: 15px;
 
             }

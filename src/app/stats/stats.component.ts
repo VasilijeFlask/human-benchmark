@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
@@ -8,40 +8,49 @@ Chart.register(...registerables);
   styleUrls: ['./stats.component.scss']
 })
 export class StatsComponent implements OnInit {
-  ngOnInit() {
-    var myChart = new Chart("myChart", {
-      type: 'bar',
-      data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-          datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
-              backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
-              ],
-              borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)'
-              ],
-              borderWidth: 1
-          }]
-      },
-      options: {
-          scales: {
-              y: {
-                  beginAtZero: true
-              }
-          }
-      }
-  });
-  }
+    @Input() labels: string[] = []
+    @Input() data: number[] = []
+    ngOnInit() {
+        var myChart = new Chart("myChart", {
+        type: 'line',
+        data: {
+            labels: this.labels,
+            datasets: [{
+                label: '',
+                data: this.data,
+                backgroundColor: 'rgba(43,135,209,0.2)', 
+                borderColor: 'rgb(43,135,209)',
+                borderWidth: 2,
+                fill: {
+                  target: 'origin',
+                  above: 'rgba(43,135,209,0.2)',
+                  below: 'rgba(43,135,209,0.6)'
+                }
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        display: false
+                    },
+                    grid: {
+                        display: false
+                    }
+                },
+                x: {
+                    ticks: {
+                        autoSkip: false
+                    }
+                },
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+    }
 }

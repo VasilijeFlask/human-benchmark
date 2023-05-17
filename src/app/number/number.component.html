@@ -1,18 +1,23 @@
 <div class="holder">
     <div class="game">
-        <span class="fa fa-sort-numeric-desc fa-7x" aria-hidden="true"></span>
-        <h1>Number Memory</h1>
-        <h2>The average person can remember 7 numbers at once. Can you do more?</h2>
-        <app-start-button></app-start-button>
+        <span class="fa fa-sort-numeric-desc fa-7x fade-in" aria-hidden="true"></span>
+        <h1 class="fade-in">Number Memory</h1>
+        <h2 class="fade-in">The average person can remember 7 numbers at once. Can you do more?</h2>
+        <app-start-button class="fade-in"></app-start-button>
     </div>
     <div class="stats_about">
         <div class="stats">
             <h2>Statistics</h2>
-            <app-stats></app-stats>
+            <app-stats [data]="pageData"
+                       [labels]="pageLabels"></app-stats>
         </div>
         <div class="about">
             <h2>About the test</h2>
-           <app-about></app-about>
+           <app-about [first]="first"
+                      [second]="second"
+                      [third]="third"
+                      [fourth]="fourth"
+                      [fifth]="fifth"></app-about>
         </div>
     </div>
 </div>

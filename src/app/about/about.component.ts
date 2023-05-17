@@ -6,11 +6,27 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit{
-  constructor() {
-    this.about = ''
-  }
-  @Input() about: string;
+  @Input() first: string;
+  @Input() second: string;
+  @Input() third: string;
+  @Input() fourth: string;
+  @Input() fifth: string;
+  @Input() sixth: string;
+  @Input() seventh: string;
+  @Input() eight: string;
 
+
+  constructor() {
+    this.first = ''
+    this.second = ''
+    this.third = ''
+    this.fourth = ''
+    this.fifth = ''
+    this.sixth = ''
+    this.seventh = ''
+    this.eight = ''
+
+  }
   ngOnInit(): void {
     
   }
