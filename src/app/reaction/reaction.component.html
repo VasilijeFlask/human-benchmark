@@ -5,10 +5,12 @@
              (click)="handleClick()" 
              [hidden]="!showBox">
         </div>
-        <span class="fa fa-bolt fa-7x fade-in" aria-hidden="true"></span>
-        <h1 class="fade-in">Reaction Time Test</h1>
-        <h2 class="fade-in">When the red box turns green, click as quickly as you can.</h2>
-        <app-start-button class="fade-in" (click)="startGame()" [hidden]="showBox"></app-start-button>
+        <span *ngIf="!showElements" class="fa fa-bolt fa-7x fade-in" aria-hidden="true"></span>
+        <h1 *ngIf="!showElements" class="fade-in">Reaction Time Test</h1>
+        <h2 *ngIf="!showElements" class="fade-in">When the red box turns green, click as quickly as you can.</h2>
+        <span *ngIf="showResult" class="result">{{reactionTime}}ms</span>
+        <app-start-button class="fade-in" (click)="startGame()" [hidden]="showBox" [hidden]="showResult"></app-start-button>
+        <app-start-button *ngIf="showResult" (click)="resetGame()" [buttonText]="'Try again'"></app-start-button>
     </div>
     <div class="stats_about">
         <div class="stats">

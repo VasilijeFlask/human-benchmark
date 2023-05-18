@@ -25,6 +25,11 @@
           opacity: 0;
           animation: fade-in 0.5s ease-out forwards;
         }
+
+        & .result {
+          font-size: 80px;
+          padding: 20px 0px 40px 0px;
+        }
       
         @keyframes fade-in {
           from {
@@ -38,10 +43,11 @@
         }
       
         & .box {
-          width: 200px;
-          height: 200px;
+          width: 100vw;
+          height: 400px;
           margin-top: 50px;
           border-radius: 10px;
+          cursor: pointer;
       
           &.red {
             background-color: red;

@@ -8,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class ReactionComponent implements OnInit {
 
   showBox = false;
+  showElements = false;
   isGreen = false;
   startTime = 0;
   endTime = 0;
   reactionTime = 0;
+  showResult = false;
 
   constructor() {}
   first = 'This is a simple tool to measure your reaction time.'
@@ -26,6 +28,7 @@ export class ReactionComponent implements OnInit {
 
   startGame() {
     this.showBox = true;
+    this.showElements = true
     setTimeout(() => {
       this.isGreen = true;
       this.startTime = Date.now();
@@ -36,7 +39,25 @@ export class ReactionComponent implements OnInit {
     if (this.isGreen) {
       this.endTime = Date.now();
       this.reactionTime = this.endTime - this.startTime;
-      console.log(this.reactionTime)
+      this.showBox = false
+      this.displayResult()
     }}
+
+  displayResult() {
+    if (this.reactionTime) {
+      this.showResult = true;
     }
+  }
+
+  resetGame() {
+    this.showBox = false;
+    this.showElements = false;
+    this.isGreen = false;
+    this.startTime = 0;
+    this.endTime = 0;
+    this.reactionTime = 0;
+    this.showResult = false;
+  }
+
+}
 
