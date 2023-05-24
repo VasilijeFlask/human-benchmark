@@ -1,9 +1,43 @@
-<div class="holder">
-    <div class="top_holder">
-        <span>Username:</span>
-        <span *ngIf="currentUser">{{currentUser.username}}</span>
-    </div>
-    <div class="bot_holder">
-
+<div class="background">
+    <div class="holder">
+        <div class="top_holder">
+            <div class="name">
+                <span>Username:</span>
+                <h1 *ngIf="currentUser">{{currentUser.username}}</h1>
+            </div>
+            <div class="joined">
+                <span class="gray">Joined:</span>
+                <span>{{currentUser?.signupTime | date:'dd/MM/yyyy'}}</span>
+            </div>
+        </div>
+        <div class="bot_holder">
+            <div class="test">
+                <span class="header">Test</span>
+                <span>Reaction time</span>
+                <span>Sequence memory</span>
+                <span>Aim trainer</span>
+                <span>Number memory</span>
+                <span>Verbal memory</span>
+                <span>Chimp test</span>
+            </div>
+            <div class="action">
+                <span class="header">Action</span>
+                <a routerLink="/reaction">Play</a>
+                <a routerLink="/sequence">Play</a>
+                <a routerLink="/aim">Play</a>
+                <a routerLink="/number">Play</a>
+                <a routerLink="/verbal">Play</a>
+                <a routerLink="/chimp">Play</a>
+            </div>
+            <div class="score">
+                <span class="header">Score</span>
+                <span>{{reactionTime}}</span>
+                <span>1</span>
+                <span>1</span>
+                <span>1</span>
+                <span>1</span>
+                <span>1</span>
+            </div>
+        </div>
     </div>
 </div>

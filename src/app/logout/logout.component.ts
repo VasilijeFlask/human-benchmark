@@ -13,11 +13,6 @@ export class LogoutComponent {
 
   }
 
-  logout(): void {
-    this._storageService.logOut()
-    console.log('logged out')
-    this._router.navigate(['/home'])
-
-  }
+  logout(): void {}
 
 }

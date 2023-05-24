@@ -6,6 +6,6 @@
     <div class="header_right">
         <a *ngIf="!(isLoggedIn | async)" routerLink="signup">Sign Up</a>
         <a *ngIf="!(isLoggedIn | async)" routerLink="login">Login</a>
-        <a *ngIf="isLoggedIn | async" (click)="logout()" routerLink="logout">Logout</a>
+        <a *ngIf="(isLoggedIn | async)" (click)="logout()" routerLink="logout">Logout</a>
     </div>
 </div>

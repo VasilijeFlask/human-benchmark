@@ -30,6 +30,7 @@ export class UserService {
       return false;
     }
     
+    user.signupTime = new Date();
     this.users.push(user);
     localStorage.setItem('users', JSON.stringify(this.users));
     return true;
@@ -71,14 +72,37 @@ export class UserService {
 
   // Load operations
   private loadUsers(): void {
+    // Retrieve 'users' string from local storage
     const usersString = localStorage.getItem('users');
-    this.users = usersString ? JSON.parse(usersString) : [];
+  
+    // Check if we got something back
+    if (usersString !== null) {
+      // Parse the string back into an array of users.
+      const usersArray = JSON.parse(usersString);
+  
+      // Iterate over each user and convert the signupTime from string to Date.
+      for (let i = 0; i < usersArray.length; i++) {
+        // Create a new Date from the signupTime string
+        const signupDate = new Date(usersArray[i].signupTime);
+        // Replace the old signupTime string with the new Date
+        usersArray[i].signupTime = signupDate;
+      }
+  
+      // Assign the processed users array back to this.users.
+      this.users = usersArray;
+    } else {
+      // If we didn't get anything back from local storage, initialize this.users with an empty array.
+      this.users = [];
+    }
   }
+  
 
   private loadCurrentUser(): void {
     const currentUserString = localStorage.getItem('currentUser');
     this.currentUser = currentUserString ? JSON.parse(currentUserString) : null;
   }
+
+  
 
   // Current User operations
   getCurrentUser(): User | null {

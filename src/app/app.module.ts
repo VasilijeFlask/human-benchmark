@@ -22,6 +22,7 @@ import { StartButtonComponent } from './start-button/start-button.component';
 import { LogoutComponent } from './logout/logout.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   {
@@ -60,9 +61,11 @@ const routes: Routes = [
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export class MyModule { }

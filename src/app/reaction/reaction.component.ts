@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ReactiontimeService } from '../services/reactiontime.service';
 
 @Component({
   selector: 'app-reaction',
@@ -14,8 +15,10 @@ export class ReactionComponent implements OnInit {
   endTime = 0;
   reactionTime = 0;
   showResult = false;
-
-  constructor() {}
+  showError = false;
+  
+  //injectujemo reactionTimeService da bismo mogli da ga koristimo
+  constructor(private reactionTimeService: ReactiontimeService) {}
   first = 'This is a simple tool to measure your reaction time.'
   second = 'The average (median) reaction time is 273 milliseconds, according to the data collected so far.'
   third = 'In addition to measuring your reaction time, this test is affected by the latency of your computer and monitor. Using a fast computer and low latency / high framerate monitor will improve your score.'
@@ -39,8 +42,20 @@ export class ReactionComponent implements OnInit {
     if (this.isGreen) {
       this.endTime = Date.now();
       this.reactionTime = this.endTime - this.startTime;
+      //dodajemo service da bismo mogli da ga koristimo u dashboardu
+
+      // sta zapravo kaze: uvati ovaj reactionTime, odradi nad njim metodu
+      // updateReactionTime, i to sve uradi pomocu reactionTimeService-a
+      this.reactionTimeService.updateReactionTime(this.reactionTime)
       this.showBox = false
       this.displayResult()
+    } else if (!this.isGreen) {
+      this.showBox = false
+      this.showError = true
+      
+      setTimeout(() => {
+        this.resetGame()
+      }, 1500)
     }}
 
   displayResult() {
@@ -57,6 +72,7 @@ export class ReactionComponent implements OnInit {
     this.endTime = 0;
     this.reactionTime = 0;
     this.showResult = false;
+    this.showError = false
   }
 
 }
