@@ -10,6 +10,7 @@ import { ChimpComponent } from './chimp/chimp.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent},
   { path: 'login', component: LoginComponent},
   { path: 'dashboard', component: DashboardComponent},
+  { path: 'logout', component: LogoutComponent },
 
 
 

@@ -13,13 +13,14 @@
             <div class="submission">
                 <div class="input">
                     <label for="username">Username</label>
-                    <input type="text" id="username">
+                    <input type="text" id="username" [(ngModel)]="username" name="username">
                 </div>
                 <div class="input">
                     <label for="pass">Password</label>
-                    <input type="password" id="pass">
+                    <input type="password" id="pass" [(ngModel)]="password" name="password">
                 </div>
-                <button>Login</button>
+                <p class="error">{{error}}</p>
+                <button (click)="login()">Login</button>
             </div>
         </div>
     </div>
