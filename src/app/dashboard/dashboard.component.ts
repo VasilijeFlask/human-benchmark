@@ -21,13 +21,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.currentUser = this.userService.getCurrentUser();
-
+  
     this.subscriptions.push(
       this.reactionTimeService.currentReactionTime.subscribe(time => this.reactionTime = time),
-      this.reactionTimeService.currentHighScore.subscribe((time) => this.highScore = time)
+      this.reactionTimeService.currentHighScore.subscribe((time) => {
+        this.highScore = time;
+        console.log('Inside high score subscription:', time); // inside the subscription callback
+      })
     )
-    
   }
+  
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((subscription: Subscription) => subscription.unsubscribe());

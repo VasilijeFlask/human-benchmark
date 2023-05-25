@@ -19,13 +19,20 @@ export class ReactiontimeService {
 
   constructor() { 
     const storedReactionTime = localStorage.getItem('score');
+    if(storedReactionTime === null) {
+      console.error('No stored reaction time found in localStorage');
+    }
     const initialReactionTime = storedReactionTime ? Number(storedReactionTime) : 0;
     this.reactionTimeSource.next(initialReactionTime);
   
-    const storedHighScore = localStorage.getItem('highscore')
-    const initialHighScore = storedHighScore ? Number(storedHighScore) : 0
+    const storedHighScore = localStorage.getItem('highScore')
+    if(storedHighScore === null) {
+      console.error('No stored high score found in localStorage');
+    }
+    const initialHighScore = storedHighScore ? Number(storedHighScore) : 0;
     this.highScoreSource.next(initialHighScore);
   }
+  
   
 
   // pravimo metodu koja ce da updatuje reactionTimeSource sa novom vrednoscu.
@@ -37,12 +44,13 @@ export class ReactiontimeService {
 
 
   updateReactionTime(time: number) {
+    console.log('Reaction time:', time);
     const storedHighScore = Number(localStorage.getItem('highScore')) || Infinity;
-    
+    console.log('Stored high score:', storedHighScore);
     if (time < storedHighScore) {
         localStorage.setItem('highScore', time.toString());
         this.highScoreSource.next(time);
-        console.log('highscore')
+        console.log('Updated high score:', time); // log here
     }
     this.reactionTimeSource.next(time);
     console.log('score')
