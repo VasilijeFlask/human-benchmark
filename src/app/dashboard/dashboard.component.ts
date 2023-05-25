@@ -11,17 +11,25 @@ import { ReactiontimeService } from '../services/reactiontime.service';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   currentUser: User | null = null;
+
+  private subscriptions: Subscription[] = []
   reactionTime: number = 0;
-  private subscription!: Subscription;
+  highScore: number = 0
+  
 
   constructor(private userService: UserService, private reactionTimeService: ReactiontimeService) {}
 
   ngOnInit(): void {
     this.currentUser = this.userService.getCurrentUser();
-    this.subscription = this.reactionTimeService.currentReactionTime.subscribe(time => this.reactionTime = time);
+
+    this.subscriptions.push(
+      this.reactionTimeService.currentReactionTime.subscribe(time => this.reactionTime = time),
+      this.reactionTimeService.currentHighScore.subscribe((time) => this.highScore = time)
+    )
+    
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscriptions.forEach((subscription: Subscription) => subscription.unsubscribe());
   }
 }

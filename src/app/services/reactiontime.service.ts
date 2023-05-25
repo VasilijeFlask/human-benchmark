@@ -10,15 +10,23 @@ export class ReactiontimeService {
   // pocetnom vrednoscu 0. BehaviorSubject storuje trenutnu vrednost - 
   // odnosno svaki sub dobije vrednost odmah po subskripciji
 
-  private reactionTimeSource!: BehaviorSubject<number>
-  currentReactionTime: Observable<number>
+  private reactionTimeSource = new BehaviorSubject<number>(0);
+  currentReactionTime: Observable<number> = this.reactionTimeSource.asObservable();
+  
+  private highScoreSource = new BehaviorSubject<number>(0);
+  currentHighScore: Observable<number> = this.highScoreSource.asObservable();
+  
 
   constructor() { 
     const storedReactionTime = localStorage.getItem('score');
     const initialReactionTime = storedReactionTime ? Number(storedReactionTime) : 0;
-    this.reactionTimeSource = new BehaviorSubject<number>(initialReactionTime);
-    this.currentReactionTime = this.reactionTimeSource.asObservable();
+    this.reactionTimeSource.next(initialReactionTime);
+  
+    const storedHighScore = localStorage.getItem('highscore')
+    const initialHighScore = storedHighScore ? Number(storedHighScore) : 0
+    this.highScoreSource.next(initialHighScore);
   }
+  
 
   // pravimo metodu koja ce da updatuje reactionTimeSource sa novom vrednoscu.
   // ta nova vrednost ce bii emitovana svim subovima
@@ -29,13 +37,17 @@ export class ReactiontimeService {
 
 
   updateReactionTime(time: number) {
-    const storedScore = Number(localStorage.getItem('score'));
+    const storedHighScore = Number(localStorage.getItem('highScore')) || Infinity;
     
-    if (!storedScore || storedScore > time) {
-      localStorage.setItem('score', time.toString());
+    if (time < storedHighScore) {
+        localStorage.setItem('highScore', time.toString());
+        this.highScoreSource.next(time);
+        console.log('highscore')
     }
-    
     this.reactionTimeSource.next(time);
-  }
+    console.log('score')
+
+}
+
   
 }
