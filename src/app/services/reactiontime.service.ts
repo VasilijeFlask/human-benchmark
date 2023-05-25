@@ -22,9 +22,20 @@ export class ReactiontimeService {
 
   // pravimo metodu koja ce da updatuje reactionTimeSource sa novom vrednoscu.
   // ta nova vrednost ce bii emitovana svim subovima
-  updateReactionTime(time: number) {
-    localStorage.setItem('score', time.toString())
-    this.reactionTimeSource.next(time)
-  }
+  // updateReactionTime(time: number) {
+  //   localStorage.setItem('score', time.toString())
+  //   this.reactionTimeSource.next(time)
+  // }
 
+
+  updateReactionTime(time: number) {
+    const storedScore = Number(localStorage.getItem('score'));
+    
+    if (!storedScore || storedScore > time) {
+      localStorage.setItem('score', time.toString());
+    }
+    
+    this.reactionTimeSource.next(time);
+  }
+  
 }
