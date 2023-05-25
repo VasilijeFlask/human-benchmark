@@ -7,7 +7,7 @@
         align-items: center;
         background-color: rgb(43,135,209);
         color: white;
-        padding: 90px 0px;
+        padding: 40px 0px 110px 0px;
         cursor: default;
         & h1 {
             font-size: 70px;
@@ -29,6 +29,38 @@
               transform: translateY(0);
             }
           }
+        & .game_in_progress {
+            & .row {
+                display: flex;
+                padding: 10px;
+
+                & div {
+                    height: 125px;
+                    width: 125px;
+                    background-color: rgb(37,115,193);
+                    margin-left: 20px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+                & .active {
+                    background-color: yellow;
+                }
+            }
+
+        }
+        & .display_level {
+            margin-bottom: 30px;
+            padding-left: 12px;
+            & .level {
+                font-size: 35px;
+                padding: 0px 5px 20px 0px;
+                color: rgb(157,199,234);
+            }
+            & .score {
+                font-size: 35px;
+                padding: 0px 0px 20px 5px;
+            }
+        }
     }
     & .stats_about {
         display: flex;

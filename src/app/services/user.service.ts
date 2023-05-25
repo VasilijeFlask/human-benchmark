@@ -31,6 +31,9 @@ export class UserService {
     }
     
     user.signupTime = new Date();
+    user.highScores = {
+      reactionTime: 0,
+    }
     this.users.push(user);
     localStorage.setItem('users', JSON.stringify(this.users));
     return true;
@@ -108,4 +111,19 @@ export class UserService {
   getCurrentUser(): User | null {
     return this.currentUser;
   }
+
+
+  updateHighScore(username: string, game: string, score: number): void {
+    const user = this.users.find(u => u.username === username);
+    if (user) {
+      user.highScores[game] = score;
+      localStorage.setItem('users', JSON.stringify(this.users));
+    }
+  }
+  
+  getHighScore(username: string, game: string): number {
+    const user = this.users.find(u => u.username === username);
+    return user ? user.highScores[game] : 0;
+  }
+  
 }

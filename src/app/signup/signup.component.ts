@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent {
-  user: User = {username: '', password: ''};
+  user: User = {username: '', password: '', highScores: { reactionTime: 0 } };
+
   confirmPassword = ''
   error = '';
 

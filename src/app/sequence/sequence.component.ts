@@ -6,6 +6,36 @@ import { Component } from '@angular/core';
   styleUrls: ['./sequence.component.scss']
 })
 export class SequenceComponent {
+
+showElements = false
+showGame = false
+tiles = Array(9)
+randomNumber = Math.floor(Math.random() * 9);
+activeTiles: boolean[] = Array(9).fill(false)
+
+
+constructor() {}
+
+ngOnInit(): void {}
+
+startGame() {
+  this.showElements = true
+  this.showGame = true
+
+}
+
+firstFlash() {
+
+}
+
+tileClicked(index: number)  {
+  console.log(index)
+}
+
+
+
+
+
   first = 'Memorize the sequence of buttons that light up, then press them in order.'
   second = 'Every time you finish the pattern, it gets longer.'
   third = 'Make a mistake, and the test is over.'

@@ -6,20 +6,11 @@ Redosled igrica:
 5. Sequence memory
 6. Verbal memory
 
-Redosled featura:
 
-1. User authentication
-2. Leaderboard functionality
-3. More games
-4. Responsive design
+Game State: The game state will consist of the sequence that the user must remember, and the current index of that sequence that the user is trying to guess. You will also need to keep track of the current round (which also equals the length of the sequence).
 
-User Authentication: Even a basic implementation, where a user can sign up, log in, and have their session remembered across page loads, could be a good demonstration of handling user data and state.
+Game Progression: At the beginning of each round, a new item is added to the sequence. You can add a new item to the sequence by generating a random number between 0 and 15 (for a 16-tile game) and appending it to the sequence array. You then need to 'display' the sequence to the user by briefly changing the color of the tiles in the sequence in order.
 
-Leaderboard Functionality: This could involve keeping track of user's game results and then displaying a list of the top scores. This would show you can handle and manipulate data in a meaningful way, which is a key part of many web applications.
+User Input: When a tile is clicked, you need to check if the tile that was clicked corresponds to the current item in the sequence that the user is trying to guess. If it is, then you move to the next item in the sequence. If the user manages to click through the whole sequence correctly, then they progress to the next round. If they click the wrong tile, then the game ends and their score is the round that they reached.
 
-More Games: Adding one or two more games will show that you can implement different types of logic and interactions. Try to choose games that demonstrate different skills - for example, if your first game is more about response time, you might choose a memory game for your second one to show you can manage complex state.
-
-Responsive Design: Ensure that your website looks good and functions well on a variety of devices and screen sizes. This is a key part of modern web development and something that professors often look for.
-
-
-Minut 1;05
+Storing High Scores: As with the Reaction Time game, you will need to store the user's high score. In the case of the Sequence Memory game, the score would be the highest round that the user has reached.
