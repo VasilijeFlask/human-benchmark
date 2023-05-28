@@ -49,17 +49,24 @@
 
         }
         & .display_level {
-            margin-bottom: 30px;
             padding-left: 12px;
-            & .level {
+            font-size: 35px;
+            padding: 0px 5px 20px 0px;
+            color: white
+        }
+        
+        }
+        & .result {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            & .display_level {
+                padding-left: 12px;
                 font-size: 35px;
                 padding: 0px 5px 20px 0px;
-                color: rgb(157,199,234);
-            }
-            & .score {
-                font-size: 35px;
-                padding: 0px 0px 20px 5px;
-            }
+                color: white
+             
         }
     }
     & .stats_about {

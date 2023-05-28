@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-sequence',
   templateUrl: './sequence.component.html',
@@ -9,9 +10,18 @@ export class SequenceComponent {
 
 showElements = false
 showGame = false
-tiles = Array(9)
+currentTileIndex!: number; 
+level = 1
+showResult = false
+
 randomNumber = Math.floor(Math.random() * 9);
-activeTiles: boolean[] = Array(9).fill(false)
+
+tiles = Array.from({length: 3}, () => Array(3).fill(null));
+activeTiles = Array.from({length: 3}, () => Array(3).fill(false));
+
+activatedTilesHistory: {row: number, col:number} [] = []
+
+
 
 
 constructor() {}
@@ -19,18 +29,88 @@ constructor() {}
 ngOnInit(): void {}
 
 startGame() {
-  this.showElements = true
-  this.showGame = true
+  this.showElements = true;
+  this.showGame = true;
+  this.currentTileIndex = 0;
+  this.level = 1;
+  this.activatedTilesHistory = [];
+  this.activateNextTile();
+}
+
+restartGame() {
+  this.showElements = false
+  this.showGame = false
+  this.currentTileIndex = 0
+  this.level = 1
+  this.showResult = false
+
+  this.tiles = Array.from({length: 3}, () => Array(3).fill(null));
+  this.activeTiles = Array.from({length: 3}, () => Array(3).fill(false));
+
+  this.startGame()
+}
+
+activateNextTile() {
+  const randomRow = Math.floor(Math.random() * 3);
+  const randomCol = Math.floor(Math.random() * 3);
+  this.activatedTilesHistory.push({ row: randomRow, col: randomCol });
+
+
+  setTimeout(() => {
+    this.activeTiles[randomRow][randomCol] = true;
+  }, 2000);
+
+  setTimeout(() => {
+    this.activeTiles[randomRow][randomCol] = false;
+  }, 2500);
+}
+
+activateFirstTile() {
+  
+}
+
+  
+nextLevel() {
+  const firstTile = this.activatedTilesHistory[0]
+  this.activeTiles[firstTile.row][firstTile.col] = true
+
+  
+
+  setTimeout(() => {
+    this.activeTiles[firstTile.row][firstTile.col] = false;
+    
+    // Now activate the next tile
+    this.activateFirstTile()
+    this.activateNextTile();
+  }, 500);
+}
+
+tileClicked(row: number, col: number) {
+  const currentActivatedTile = this.activatedTilesHistory[this.currentTileIndex];
+
+  if (row === currentActivatedTile.row && col === currentActivatedTile.col) {
+    // User clicked the right tile
+    this.currentTileIndex += 1;
+
+    if (this.currentTileIndex === this.activatedTilesHistory.length) {
+      // User has clicked all tiles in sequence. Move to the next level.
+      this.currentTileIndex = 0;
+      this.level += 1;
+      console.log(this.level)
+      console.log(this.activatedTilesHistory)
+      this.nextLevel()
+    }
+  } else {
+    // User clicked the wrong tile. Game over.
+    this.showResult = true;
+    this.showGame = true;
+    this.showElements = true;
+    console.log(this.level)
+  }
 
 }
 
-firstFlash() {
 
-}
-
-tileClicked(index: number)  {
-  console.log(index)
-}
 
 
 
