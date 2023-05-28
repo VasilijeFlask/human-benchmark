@@ -33,7 +33,8 @@ startGame() {
   this.currentTileIndex = 0;
   this.level = 1;
   this.activatedTilesHistory = [];
-  this.activateNextTile();
+  this.chooseNextTile();
+  this.flashTile(0);
 }
 
 restartGame() {
@@ -52,19 +53,21 @@ restartGame() {
 
 // Game in progress
 
-activateNextTile() {
+chooseNextTile() {
   const randomRow = Math.floor(Math.random() * 3);
   const randomCol = Math.floor(Math.random() * 3);
   this.activatedTilesHistory.push({ row: randomRow, col: randomCol });
+}
 
+flashTile(index: number) {
+  if (this.activatedTilesHistory[index]) {
+    const tile = this.activatedTilesHistory[index];
+    this.activeTiles[tile.row][tile.col] = true;
 
-  setTimeout(() => {
-    this.activeTiles[randomRow][randomCol] = true;
-  }, 2000);
-
-  setTimeout(() => {
-    this.activeTiles[randomRow][randomCol] = false;
-  }, 2500);
+    setTimeout(() => {
+      this.activeTiles[tile.row][tile.col] = false;
+    }, 500);
+  }
 }
 
 activateFirstTile() {
@@ -76,18 +79,25 @@ activateFirstTile() {
   }, 500);
 }
 
+activateSecondTile() {
+  const secondTile = this.activatedTilesHistory[1]
+  this.activeTiles[secondTile.row][secondTile.col] = true;
+
+  setTimeout(() => {
+    this.activeTiles[secondTile.row][secondTile.col] = false;
+  }, 500);
+}
+
 
   
 nextLevel() {
-  console.log('wtf')
+  this.chooseNextTile();
 
-  // After the first tile has finished flashing, activate the next tile
   setTimeout(() => {
-    this.activateFirstTile();
-
-    this.activateNextTile();
-  }, 500);
+    this.flashTile(this.level - 1);
+  }, 1000);
 }
+
 
 
 tileClicked(row: number, col: number) {
