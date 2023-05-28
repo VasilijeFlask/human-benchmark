@@ -21,13 +21,12 @@ activeTiles = Array.from({length: 3}, () => Array(3).fill(false));
 
 activatedTilesHistory: {row: number, col:number} [] = []
 
-
-
-
 constructor() {}
 
 ngOnInit(): void {}
 
+
+// Initialization
 startGame() {
   this.showElements = true;
   this.showGame = true;
@@ -50,6 +49,9 @@ restartGame() {
   this.startGame()
 }
 
+
+// Game in progress
+
 activateNextTile() {
   const randomRow = Math.floor(Math.random() * 3);
   const randomCol = Math.floor(Math.random() * 3);
@@ -66,24 +68,27 @@ activateNextTile() {
 }
 
 activateFirstTile() {
-  
-}
-
-  
-nextLevel() {
-  const firstTile = this.activatedTilesHistory[0]
-  this.activeTiles[firstTile.row][firstTile.col] = true
-
-  
+  const firstTile = this.activatedTilesHistory[0];
+  this.activeTiles[firstTile.row][firstTile.col] = true;
 
   setTimeout(() => {
     this.activeTiles[firstTile.row][firstTile.col] = false;
-    
-    // Now activate the next tile
-    this.activateFirstTile()
+  }, 500);
+}
+
+
+  
+nextLevel() {
+  console.log('wtf')
+
+  // After the first tile has finished flashing, activate the next tile
+  setTimeout(() => {
+    this.activateFirstTile();
+
     this.activateNextTile();
   }, 500);
 }
+
 
 tileClicked(row: number, col: number) {
   const currentActivatedTile = this.activatedTilesHistory[this.currentTileIndex];
@@ -96,8 +101,6 @@ tileClicked(row: number, col: number) {
       // User has clicked all tiles in sequence. Move to the next level.
       this.currentTileIndex = 0;
       this.level += 1;
-      console.log(this.level)
-      console.log(this.activatedTilesHistory)
       this.nextLevel()
     }
   } else {
