@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ReactiontimeService } from '../services/reactiontime.service';
+import { ReactiontimeService } from '../../../services/reactiontime.service';
 
 @Component({
   selector: 'app-reaction',

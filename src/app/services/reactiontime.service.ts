@@ -14,19 +14,8 @@ export class ReactiontimeService {
   
 
   constructor() { 
-    // const storedReactionTime = localStorage.getItem('score');
-    // if(storedReactionTime === null) {
-    //   console.error('No stored reaction time found in localStorage');
-    // }
-    // const initialReactionTime = storedReactionTime ? Number(storedReactionTime) : 0;
-    // this.reactionTimeSource.next(initialReactionTime);
-  
 
-    
     const storedHighScore = localStorage.getItem('highScore')
-    // if(storedHighScore === null) {
-    //   console.error('No stored high score found in localStorage');
-    // }
     const initialHighScore = storedHighScore ? Number(storedHighScore) : 0;
     this.highScoreSource.next(initialHighScore);
   }
@@ -38,9 +27,5 @@ export class ReactiontimeService {
         this.highScoreSource.next(time);
     }
     this.reactionTimeSource.next(time);
-
-
 }
-
-  
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SequenceService } from '../services/sequence.service';
-import { StatisticsService } from '../services/statistics.service';
+import { SequenceService } from '../../../services/sequence.service';
+import { StatisticsService } from '../../../services/statistics.service';
 
 
 @Component({
