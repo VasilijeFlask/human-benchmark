@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { SequenceService } from '../services/sequence.service';
+import { StatisticsService } from '../services/statistics.service';
+
 
 @Component({
   selector: 'app-sequence',
@@ -25,7 +27,8 @@ export class SequenceComponent {
   pageData: number[] = [0, 10, 20, 8, 15, 25, 35, 58, 54, 38, 35, 30, 25, 20, 18, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3 ]
   highScore!: number;
 
-  constructor(private sequenceService: SequenceService) {}
+  constructor(private sequenceService: SequenceService,
+              private statisticsService: StatisticsService) {}
 
   ngOnInit(): void {
     this.sequenceService.currentHighScore.subscribe(highScore => this.highScore = highScore)
@@ -74,6 +77,8 @@ export class SequenceComponent {
       if (this.level - 1 > this.highScore) {
         this.sequenceService.updateHighScore(this.level - 1)
       }
+      this.statisticsService.addData(this.level - 1)
+      
     }
   }
 

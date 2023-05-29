@@ -24,3 +24,4 @@ export class SequenceService {
     this.highScoreSource.next(newHighScore);
   }
 }
+ 
