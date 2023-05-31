@@ -10,7 +10,7 @@ import { StatisticsService } from '../../../services/statistics.service';
 })
 export class SequenceComponent {
   
-  // Data members
+
   showElements = false
   showGame = false
   currentTileIndex!: number; 
@@ -34,7 +34,7 @@ export class SequenceComponent {
     this.sequenceService.currentHighScore.subscribe(highScore => this.highScore = highScore)
   }
 
-  // Game Initialization
+
   startGame() {
     this.showElements = true;
     this.showGame = true;
@@ -58,7 +58,7 @@ export class SequenceComponent {
     this.startGame()
   }
 
-  // Game Actions
+
   tileClicked(row: number, col: number) {
     const currentActivatedTile = this.activatedTilesHistory[this.currentTileIndex];
 
@@ -82,7 +82,7 @@ export class SequenceComponent {
     }
   }
 
-  // Tile activation
+
   chooseNextTile() {
     const randomRow = Math.floor(Math.random() * 3);
     const randomCol = Math.floor(Math.random() * 3);

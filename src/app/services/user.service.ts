@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/User.interface';
 import { StorageService } from './storage.service';
@@ -8,23 +7,24 @@ import { ReplaySubject, BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
   private loggedInStatus = new BehaviorSubject<boolean>(this._storageService.isLoggedIn());
   private users: User[] = [];
   private currentUser: User | null = null
 
-  constructor(private _http: HttpClient, private _storageService: StorageService) {
+  constructor(private _storageService: StorageService) {
     this.initializeService();
   }
 
-  // Initialization
+  
   private initializeService(): void {
     this.loadUsers();
     this.loadCurrentUser();
     this.loggedInStatus.next(this._storageService.isLoggedIn());
   }
 
-  // User operations
+
   addUser(user: User): boolean {
     if (this.users.some(u => u.username === user.username)) {
       return false;
@@ -33,13 +33,14 @@ export class UserService {
     user.signupTime = new Date();
     user.highScores = {
       reactionTime: 0,
+      sequence: 0
     }
     this.users.push(user);
     localStorage.setItem('users', JSON.stringify(this.users));
     return true;
   }
 
-  // Login operations
+
   isLoggedIn(): Observable<boolean> {
     return this.loggedInStatus.asObservable();
   }
@@ -73,28 +74,20 @@ export class UserService {
     localStorage.removeItem('currentUser')
   }
 
-  // Load operations
+  
   private loadUsers(): void {
-    // Retrieve 'users' string from local storage
     const usersString = localStorage.getItem('users');
-  
-    // Check if we got something back
+
     if (usersString !== null) {
-      // Parse the string back into an array of users.
       const usersArray = JSON.parse(usersString);
-  
-      // Iterate over each user and convert the signupTime from string to Date.
+
       for (let i = 0; i < usersArray.length; i++) {
-        // Create a new Date from the signupTime string
         const signupDate = new Date(usersArray[i].signupTime);
-        // Replace the old signupTime string with the new Date
         usersArray[i].signupTime = signupDate;
       }
-  
-      // Assign the processed users array back to this.users.
       this.users = usersArray;
+
     } else {
-      // If we didn't get anything back from local storage, initialize this.users with an empty array.
       this.users = [];
     }
   }
@@ -107,11 +100,9 @@ export class UserService {
 
   
 
-  // Current User operations
   getCurrentUser(): User | null {
     return this.currentUser;
   }
-
 
   updateHighScore(username: string, game: string, score: number): void {
     const user = this.users.find(u => u.username === username);

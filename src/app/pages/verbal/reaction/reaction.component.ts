@@ -17,7 +17,7 @@ export class ReactionComponent implements OnInit {
   showResult = false;
   showError = false;
   
-  //injectujemo reactionTimeService da bismo mogli da ga koristimo
+
   constructor(private reactionTimeService: ReactiontimeService) {}
   first = 'This is a simple tool to measure your reaction time.'
   second = 'The average (median) reaction time is 273 milliseconds, according to the data collected so far.'
@@ -42,10 +42,6 @@ export class ReactionComponent implements OnInit {
     if (this.isGreen) {
       this.endTime = Date.now();
       this.reactionTime = this.endTime - this.startTime;
-      //dodajemo service da bismo mogli da ga koristimo u dashboardu
-
-      // sta zapravo kaze: uvati ovaj reactionTime, odradi nad njim metodu
-      // updateReactionTime, i to sve uradi pomocu reactionTimeService-a
       this.reactionTimeService.updateReactionTime(this.reactionTime)
       this.showBox = false
       this.displayResult()

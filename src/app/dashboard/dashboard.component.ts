@@ -29,7 +29,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.currentUser = this.userService.getCurrentUser();
   
     this.subscriptions.push(
-      this.reactionTimeService.currentReactionTime.subscribe(time => this.reactionTime = time),
       this.reactionTimeService.currentHighScore.subscribe(time => this.reactionHighScore = time),
       this.sequenceService.currentHighScore.subscribe(score => this.sequenceHighScore = score)
     )

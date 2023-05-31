@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class SequenceService {
+  
   private highScoreSource = new BehaviorSubject<number>(this.getInitialHighScore());
   currentHighScore = this.highScoreSource.asObservable();
 
@@ -12,9 +13,7 @@ export class SequenceService {
 
   private getInitialHighScore(): number {
     const storedHighScore = localStorage.getItem('sequenceHighScore');
-    // if(storedHighScore === null) {
-    //   console.error('No stored high score found in localStorage');
-    // }
+
     const initialHighScore = storedHighScore ? Number(storedHighScore) : 0;
     return initialHighScore;
   }

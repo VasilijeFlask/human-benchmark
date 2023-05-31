@@ -6,13 +6,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class ReactiontimeService {
 
-  private reactionTimeSource = new BehaviorSubject<number>(0);
-  currentReactionTime: Observable<number> = this.reactionTimeSource.asObservable();
-  
   private highScoreSource = new BehaviorSubject<number>(0);
   currentHighScore: Observable<number> = this.highScoreSource.asObservable();
   
-
   constructor() { 
 
     const storedHighScore = localStorage.getItem('highScore')
@@ -26,6 +22,4 @@ export class ReactiontimeService {
         localStorage.setItem('highScore', time.toString());
         this.highScoreSource.next(time);
     }
-    this.reactionTimeSource.next(time);
-}
-}
+}}
