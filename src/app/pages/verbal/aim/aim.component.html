@@ -1,9 +1,14 @@
 <div class="holder">
-    <div class="game">
-        <span class="fa fa-bullseye fa-5x fade-in" aria-hidden="true"></span>
-        <h1 class="fade-in">Aim Trainer</h1>
-        <h2 class="fade-in">Hit 30 targets as quickly as you can.</h2>
-        <app-start-button class="fade-in"></app-start-button>
+    <div class="game" [ngStyle]="gamePadding">
+        <div *ngIf="showElements"  class="elements">
+            <span class="fa fa-bullseye fa-6x fade-in" aria-hidden="true"></span>
+            <h1 class="fade-in">Aim Trainer</h1>
+            <h2 class="fade-in">Hit 30 targets as quickly as you can.</h2>
+            <app-start-button (click)="startGame()" class="fade-in"></app-start-button>
+        </div>
+        <div *ngIf="showGame" class="show_game" [ngStyle]="targetStyle">
+            <span class="fa fa-bullseye fa-6x fade-in" aria-hidden="true"></span>
+        </div>
     </div>
     <div class="stats_about">
         <div class="stats">
